@@ -19,26 +19,45 @@
 
         <p>
 
-        <label for="config_param_a">Niteen havaintohistorian näyttämiseen käytettävän raportin ID: </label>
+        <label for="config_param_a">
+            [% IF lang == 'sv-SE' %]
+                Rapport-ID som används för att visa objektets historik:
+            [% ELSIF lang == 'en' %]
+                Report ID used to display item history:
+            [% ELSE %]
+                Niteen havaintohistorian näyttämiseen käytettävän raportin ID:
+            [% END %]
+        </label>
         <input type="text" name="config_param_a" value="[% config_param_a %]" />
 
         <p>
 
         <input type="hidden" name="save" value="1" />
 
-        <input type="submit" value="Save configuration" />
+        <input type="submit" value="[% IF lang == 'sv-SE' %]Spara konfiguration[% ELSIF lang == 'en' %]Save configuration[% ELSE %]Tallenna asetukset[% END %]" />
     </form>
 
     <hr/>
 
     <p>
-        <h5>Upgrade status</h5>
+        <h5>[% IF lang == 'sv-SE' %]Uppgraderingsstatus[% ELSIF lang == 'en' %]Upgrade status[% ELSE %]Päivityksen tila[% END %]</h5>
         [% IF last_upgraded %]
-            Plugin was last upgraded on this system on [% last_upgraded | $KohaDates with_hours => 1 %]
+            [% IF lang == 'sv-SE' %]
+                Pluginet uppgraderades senast på detta system [% last_upgraded | $KohaDates with_hours => 1 %]
+            [% ELSIF lang == 'en' %]
+                Plugin was last upgraded on this system on [% last_upgraded | $KohaDates with_hours => 1 %]
+            [% ELSE %]
+                Liitännäinen päivitettiin viimeksi tässä järjestelmässä [% last_upgraded | $KohaDates with_hours => 1 %]
+            [% END %]
         [% ELSE %]
-            Plugin has never been upgraded.
+            [% IF lang == 'sv-SE' %]
+                Pluginet har aldrig uppgraderats.
+            [% ELSIF lang == 'en' %]
+                Plugin has never been upgraded.
+            [% ELSE %]
+                Liitännäistä ei ole koskaan päivitetty.
+            [% END %]
         [% END %]
     </p>
 
 [% INCLUDE 'intranet-bottom.inc' %]
-

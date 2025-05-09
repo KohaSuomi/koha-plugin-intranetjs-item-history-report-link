@@ -14,15 +14,28 @@ $(document).ready(function () {
                 const reportUrl = `/cgi-bin/koha/reports/guided_reports.pl?id=${havaintoRaportti}&param_name=itemnumber&sql_params=${itemNumber}&op=run`;
 
                 // Create a new <li> element with the wanted attributes for the report link
+                const uiLanguage = $('html').attr('lang'); // Get the UI language from the <html> tag
+                let labelText = 'Havaintohistoria: ';
+                let linkText = 'Raportti';
+
+                // Set translations based on the UI language
+                if (uiLanguage === 'en') {
+                    labelText = 'Item history: ';
+                    linkText = 'Report';
+                } else if (uiLanguage === 'sv-SE') {
+                    labelText = 'Historik: ';
+                    linkText = ' Rapport';
+                }
+
                 const newLi = $('<li>').append(
                     $('<span>')
                         .addClass('label')
-                        .text('Havaintohistoria: '),
+                        .text(labelText),
                     $('<a>')
                         .attr('href', `${reportUrl}`)
                         .attr('id', `link-item-${itemNumber}`) // This is not mandatory, but helpful for possible future uses
                         .attr('class', 'havaintohistoria')
-                        .text(`Raportti`)
+                        .text(linkText)
                 );
 
                 // Determine where the link (<li> element) is placed (in this case at the top of the Historia section)

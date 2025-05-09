@@ -13,6 +13,17 @@ use File::Slurp;
 ## Here we set our plugin version
 our $VERSION = "1.0.0";
 
+my $language = C4::Languages::getlanguage();
+my $description = '';
+if ($language eq 'en') {
+    $description = "Adds a direct link to item history report for each item's details on the items page. The report must be added to the report library, and the report number must be configured in the plugin settings.";
+} elsif ($language eq 'sv-SE') {
+    $description = "Lägger till en direktlänk till historikrapporten för varje items detaljer på items-sidan. Rapporten måste läggas till i rapportbiblioteket och rapportnumret måste konfigureras i plugin-inställningarna.";
+} else {
+    $description = "Lisää niteet-sivulle kunkin niteen tietoihin suoran linkin raporttiin, joka hakee kyseisen niteen havainnot. Raportti on lisättävä raporttikirjastoon ja raportin numero tulee konfiguroida liitännäisen asetuksiin.";
+}
+
+
 ## Here is our metadata, some keys are required, some are optional
 our $metadata = {
     name            => "IntranetUserJS: Item history report link",
@@ -22,7 +33,7 @@ our $metadata = {
     minimum_version => '23.11',
     maximum_version => '',
     version         => $VERSION,
-    description     => "Lisää niteet-sivulle kunkin niteen tietoihin suoran linkin raporttiin, joka hakee kyseisen niteen havainnot. Raportti on lisättävä raporttikirjastoon ja raportin numero tulee konfiguroida liitännäisen asetuksiin.",
+    description     => $description,
 };
 
 ## This is the minimum code required for a plugin's 'new' method
