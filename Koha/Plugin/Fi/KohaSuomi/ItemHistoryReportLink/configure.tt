@@ -9,7 +9,7 @@
 
 <div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; IntranetUserJS: Item history report link &rsaquo; Configuration</div>
 
-<div id="doc3">
+<div id="doc3" style="margin: 10px;">
 
     <!-- Notice our form here has no 'action', this is good, it means that our forms will always get passed back to 'plugins/run.pl'. You could hard code it instead if you prefer -->
     <form method="get">
@@ -19,7 +19,7 @@
 
         <p>
 
-        <label for="config_param_a">Käytettävän raportin ID: </label>
+        <label for="config_param_a">Niteen havaintohistorian näyttämiseen käytettävän raportin ID: </label>
         <input type="text" name="config_param_a" value="[% config_param_a %]" />
 
         <p>
