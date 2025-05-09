@@ -23,7 +23,7 @@ $(document).ready(function () {
                     labelText = 'Item history: ';
                     linkText = 'Report';
                 } else if (uiLanguage === 'sv-SE') {
-                    labelText = 'Historik: ';
+                    labelText = 'Exemplarshistorik: ';
                     linkText = ' Rapport';
                 }
 
