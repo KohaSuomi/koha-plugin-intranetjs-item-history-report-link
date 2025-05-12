@@ -16,12 +16,12 @@ $(document).ready(function () {
                 // Create a new <li> element with the wanted attributes for the report link
                 const uiLanguage = $('html').attr('lang'); // Get the UI language from the <html> tag
                 let labelText = 'Havaintohistoria: ';
-                let linkText = 'Raportti';
+                let linkText = ' Raportti';
 
                 // Set translations based on the UI language
                 if (uiLanguage === 'en') {
                     labelText = 'Item history: ';
-                    linkText = 'Report';
+                    linkText = ' Report';
                 } else if (uiLanguage === 'sv-SE') {
                     labelText = 'Exemplarshistorik: ';
                     linkText = ' Rapport';
