@@ -2,6 +2,21 @@ $(document).ready(function () {
     if (window.location.pathname === '/cgi-bin/koha/catalogue/moredetail.pl') {
         // Check if the page contains actual items (= has more than one section)
         if ($('div.page-section.clearfix').length > 0) {
+            
+                     // Find elements with label "Total checkouts:" and clean up child text inside ( )
+                    $('span.label').filter(function () {
+                        return $(this).text().trim() === 'Total checkouts:';
+                    }).each(function () {
+                        
+                        let next = this.nextSibling.nextElementSibling; // Skip the first text node (whitespace)
+
+                        this.nextSibling.textContent = this.nextSibling.textContent.replace('(', ' ');
+                        if (next) {
+                            next.nextSibling.textContent = ' ';
+                            next.textContent = ' ';
+                        }
+                    });
+
 
             const havaintoRaportti = REPLACE_BY_CONFIG_PARAM_A; // Change this to the desired report ID
 
