@@ -2,12 +2,12 @@ $(document).ready(function () {
     if (window.location.pathname === '/cgi-bin/koha/catalogue/moredetail.pl') {
         // Check if the page contains actual items (= has more than one section)
         if ($('div.page-section.clearfix').length > 0) {
-            
+
                      // Find elements with label "Total checkouts:" and clean up child text inside ( )
                     $('span.label').filter(function () {
-                        return $(this).text().trim() === 'Total checkouts:';
+                        const text = $(this).text();
+                        return text === 'Total checkouts:' || text === 'Yhteensä lainassa:' || text === 'Totalt antal lån:';
                     }).each(function () {
-                        
                         let next = this.nextSibling.nextElementSibling; // Skip the first text node (whitespace)
 
                         this.nextSibling.textContent = this.nextSibling.textContent.replace('(', ' ');
