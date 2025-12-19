@@ -21,9 +21,9 @@ $(document).ready(function () {
             const havaintoRaportti = REPLACE_BY_CONFIG_PARAM_A; // Change this to the desired report ID
 
             // We can obtain the itemnumber from the <h3> element of each section (item)
-            $('h3[id^="item"]').each(function () {
+            $('div[id^="container"]').each(function () {
                 const id = $(this).attr('id');
-                const itemNumber = id.replace('item', '');
+                const itemNumber = id.replace('container', '');
 
                 // Build a link to the report
                 const reportUrl = `/cgi-bin/koha/reports/guided_reports.pl?id=${havaintoRaportti}&param_name=itemnumber&sql_params=${itemNumber}&op=run`;
@@ -54,7 +54,7 @@ $(document).ready(function () {
                 );
 
                 // Determine where the link (<li> element) is placed (in this case at the top of the Historia section)
-                const targetDiv = $(this).parent().siblings('.listgroup').eq(2);
+                const targetDiv = $(this).find('.listgroup').eq(3);
                 const targetOl = targetDiv.children('.rows').children('ol.bibliodetails');
 
                 // Check if the targetDiv and targetOl exist before appending (just in case)
