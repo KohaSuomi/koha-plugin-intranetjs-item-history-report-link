@@ -110,7 +110,7 @@ sub configure {
 
         ## Grab the values we already have for our settings, if any exist
         $template->param(
-            config_param_a => $self->retrieve_data('config_param_a'),
+            config_param_a => scalar $self->retrieve_data('config_param_a'),
             last_upgraded   => $self->retrieve_data('last_upgraded'),
         );
 
@@ -119,7 +119,7 @@ sub configure {
     else {
         $self->store_data(
             {
-                config_param_a => $cgi->param('config_param_a'),
+                config_param_a => scalar $cgi->param('config_param_a'),
                 last_configured_by => C4::Context->userenv->{'number'},
             }
         );
