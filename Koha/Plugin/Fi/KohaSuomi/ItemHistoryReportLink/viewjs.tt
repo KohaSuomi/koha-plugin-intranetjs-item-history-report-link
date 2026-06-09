@@ -1,12 +1,17 @@
+[% TRY %]
+    [% PROCESS "$PLUGIN_DIR/i18n/${LANG}.inc" %]
+[% CATCH %]
+    [% PROCESS "$PLUGIN_DIR/i18n/default.inc" %]
+[% END %]
 [% INCLUDE 'doc-head-open.inc' %]
- <title>IntranetUserJS: Item history report link</title>
+ <title>[% T.viewjs_1 %]</title>
 [% INCLUDE 'doc-head-close.inc' %]
 </head>
 <body>
 [% INCLUDE 'header.inc' %]
 [% INCLUDE 'cat-search.inc' %]
 
-<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; ItemHistoryReportLink &rsaquo; View JS Tool</div>
+<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">[% T.configure_2 %]</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">[% T.configure_3 %]</a>[% T.viewjs_2 %]</div>
 
 <div id="js">
     <textarea rows=40 cols=180> [% jscontent %] </textarea>

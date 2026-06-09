@@ -1,13 +1,18 @@
+[% TRY %]
+    [% PROCESS "$PLUGIN_DIR/i18n/${LANG}.inc" %]
+[% CATCH %]
+    [% PROCESS "$PLUGIN_DIR/i18n/default.inc" %]
+[% END %]
 [% USE KohaDates %]
 [% INCLUDE 'doc-head-open.inc' %]
- <title>IntranetUserJS: Item history report link Configuration</title>
+ <title>[% T.configure_1 %]</title>
 [% INCLUDE 'doc-head-close.inc' %]
 </head>
 <body>
 [% INCLUDE 'header.inc' %]
 [% INCLUDE 'cat-search.inc' %]
 
-<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; IntranetUserJS: Item history report link &rsaquo; Configuration</div>
+<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">[% T.configure_2 %]</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">[% T.configure_3 %]</a>[% T.configure_4 %]</div>
 
 <div id="doc3" style="margin: 10px;">
 
@@ -21,11 +26,11 @@
 
         <label for="config_param_a">
             [% IF lang == 'sv-SE' %]
-                Rapport-ID som används för att visa objektets historik:
+                [% T.configure_5 %]
             [% ELSIF lang == 'en' %]
-                Report ID used to display item history:
+                [% T.configure_6 %]
             [% ELSE %]
-                Niteen havaintohistorian näyttämiseen käytettävän raportin ID:
+                [% T.configure_7 %]
             [% END %]
         </label>
         <input type="text" name="config_param_a" value="[% config_param_a %]" />
@@ -40,7 +45,7 @@
     <hr/>
 
     <p>
-        <h5>[% IF lang == 'sv-SE' %]Uppgraderingsstatus[% ELSIF lang == 'en' %]Upgrade status[% ELSE %]Päivityksen tila[% END %]</h5>
+        <h5>[% IF lang == 'sv-SE' %][% T.configure_8 %][% ELSIF lang == 'en' %][% T.configure_9 %][% ELSE %][% T.configure_10 %][% END %]</h5>
         [% IF last_upgraded %]
             [% IF lang == 'sv-SE' %]
                 Pluginet uppgraderades senast på detta system [% last_upgraded | $KohaDates with_hours => 1 %]
@@ -51,11 +56,11 @@
             [% END %]
         [% ELSE %]
             [% IF lang == 'sv-SE' %]
-                Pluginet har aldrig uppgraderats.
+                [% T.configure_11 %]
             [% ELSIF lang == 'en' %]
-                Plugin has never been upgraded.
+                [% T.configure_12 %]
             [% ELSE %]
-                Liitännäistä ei ole koskaan päivitetty.
+                [% T.configure_13 %]
             [% END %]
         [% END %]
     </p>

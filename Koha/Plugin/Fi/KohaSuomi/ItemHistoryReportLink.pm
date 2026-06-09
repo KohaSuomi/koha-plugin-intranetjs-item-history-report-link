@@ -9,20 +9,10 @@ use base qw(Koha::Plugins::Base);
 use C4::Context;
 use utf8;
 use File::Slurp;
+use C4::Languages;
 
 ## Here we set our plugin version
 our $VERSION = "1.0.0";
-
-my $language = C4::Languages::getlanguage();
-my $description = '';
-if ($language eq 'en') {
-    $description = "Adds a direct link to item history report for each item's details on the items page. The report must be added to the report library, and the report number must be configured in the plugin settings. (Local databases)";
-} elsif ($language eq 'sv-SE') {
-    $description = "Lägger till en direktlänk till historikrapporten för varje items detaljer på items-sidan. Rapporten måste läggas till i rapportbiblioteket och rapportnumret måste konfigureras i plugin-inställningarna. (Lokala databaser)";
-} else {
-    $description = "Lisää niteet-sivulle kunkin niteen tietoihin suoran linkin raporttiin, joka hakee kyseisen niteen havainnot. Raportti on lisättävä raporttikirjastoon ja raportin numero tulee konfiguroida liitännäisen asetuksiin. (Paikalliskannat)";
-}
-
 
 ## Here is our metadata, some keys are required, some are optional
 our $metadata = {
@@ -33,8 +23,27 @@ our $metadata = {
     minimum_version => '23.11',
     maximum_version => '',
     version         => $VERSION,
-    description     => $description,
+    description     => "Adds a direct link to item history report for each item's details on the items page. The report must be added to the report library, and the report number must be configured in the plugin settings. (Local databases)",
 };
+
+sub get_localized_metadata {
+    my ($self) = @_;
+    my $lang = C4::Languages::getlanguage() || 'en';
+    my ($name, $description);
+
+    if ($lang eq 'sv-SE') {
+        $name = "IntranetUserJS: Länk till rapport över exemplarhistorik";
+        $description = "Lägger till en direktlänk till historikrapporten för varje items detaljer på items-sidan. Rapporten måste läggas till i rapportbiblioteket och rapportnumret måste konfigureras i plugin-inställningarna. (Lokala databaser)";
+    
+    } elsif ($lang eq 'fi-FI' ) {
+        $name = "IntranetUserJS: Niteen havaintohistorian raporttilinkki";
+        $description = "Lisää niteet-sivulle kunkin niteen tietoihin suoran linkin raporttiin, joka hakee kyseisen niteen havainnot. Raportti on lisättävä raporttikirjastoon ja raportin numero tulee konfiguroida liitännäisen asetuksiin. (Paikalliskannat)";
+    } else {
+        $name = "IntranetUserJS: Item history report link";
+        $description = "Adds a direct link to item history report for each item's details on the items page. The report must be added to the report library, and the report number must be configured in the plugin settings. (Local databases)";
+    }
+    return ($name, $description);
+}
 
 ## This is the minimum code required for a plugin's 'new' method
 ## More can be added, but none should be removed
@@ -49,6 +58,10 @@ sub new {
     ## This runs some additional magic and checking
     ## and returns our actual 
     my $self = $class->SUPER::new($args);
+
+    my ($name, $description) = $self->get_localized_metadata();
+    $self->{'metadata'}->{'name'} = $name;
+    $self->{'metadata'}->{'description'} = $description;
 
     return $self;
 }
