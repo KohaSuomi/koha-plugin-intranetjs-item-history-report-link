@@ -25,13 +25,7 @@
         <p>
 
         <label for="config_param_a">
-            [% IF lang == 'sv-SE' %]
-                [% T.configure_5 %]
-            [% ELSIF lang == 'en' %]
-                [% T.configure_6 %]
-            [% ELSE %]
-                [% T.configure_7 %]
-            [% END %]
+            [% T.configure_5 %]
         </label>
         <input type="text" name="config_param_a" value="[% config_param_a %]" />
 
@@ -45,7 +39,7 @@
     <hr/>
 
     <p>
-        <h5>[% IF lang == 'sv-SE' %][% T.configure_8 %][% ELSIF lang == 'en' %][% T.configure_9 %][% ELSE %][% T.configure_10 %][% END %]</h5>
+        <h5>[% T.configure_8 %]</h5>
         [% IF last_upgraded %]
             [% IF lang == 'sv-SE' %]
                 Pluginet uppgraderades senast på detta system [% last_upgraded | $KohaDates with_hours => 1 %]
@@ -55,13 +49,7 @@
                 Liitännäinen päivitettiin viimeksi tässä järjestelmässä [% last_upgraded | $KohaDates with_hours => 1 %]
             [% END %]
         [% ELSE %]
-            [% IF lang == 'sv-SE' %]
-                [% T.configure_11 %]
-            [% ELSIF lang == 'en' %]
-                [% T.configure_12 %]
-            [% ELSE %]
-                [% T.configure_13 %]
-            [% END %]
+            [% T.configure_11 %]
         [% END %]
     </p>
 
