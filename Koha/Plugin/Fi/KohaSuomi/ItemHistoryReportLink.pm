@@ -33,11 +33,11 @@ sub get_localized_metadata {
 
     if ($lang eq 'sv-SE') {
         $name = "IntranetUserJS: Länk till rapport över exemplarhistorik";
-        $description = "Lägger till en direktlänk till historikrapporten för varje items detaljer på items-sidan. Rapporten måste läggas till i rapportbiblioteket och rapportnumret måste konfigureras i plugin-inställningarna. (Lokala databaser)";
+        $description = "Lägger till en länk till historikrapporten för varje exemplars detaljer på Exemplar-sidan. Rapporten måste läggas till i Sparade rapporter och rapportnumret måste konfigureras i plugin-inställningarna. (Lokala databaser)";
     
     } elsif ($lang eq 'fi-FI' ) {
         $name = "IntranetUserJS: Niteen havaintohistorian raporttilinkki";
-        $description = "Lisää niteet-sivulle kunkin niteen tietoihin suoran linkin raporttiin, joka hakee kyseisen niteen havainnot. Raportti on lisättävä raporttikirjastoon ja raportin numero tulee konfiguroida liitännäisen asetuksiin. (Paikalliskannat)";
+        $description = "Lisää niteet-sivulle kunkin niteen tietoihin linkin raporttiin, joka hakee kyseisen niteen havainnot. Raportti on lisättävä Tallennettuihin raportteihin ja raportin numero tulee määrittää liitännäisen asetuksiin. (Paikalliskannat)";
     } else {
         $name = "IntranetUserJS: Item history report link";
         $description = "Adds a direct link to item history report for each item's details on the items page. The report must be added to the report library, and the report number must be configured in the plugin settings. (Local databases)";
